@@ -12,7 +12,7 @@ web3 = Web3(Web3.HTTPProvider(rpc))
 abi = json.loads('[{"constant":false,"inputs":[{"name":"_candidateId","type":"uint256"}],"name":"vote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"candidatesCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidates","outputs":[{"name":"id","type":"uint256"},{"name":"name","type":"string"},{"name":"party","type":"string"},{"name":"voteCount","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"voters","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]')
 
 contract_addr = web3.toChecksumAddress(
-    "0x6262F55d7fAd62E1B028AE68dCDC4A4aba3D48EB")
+    "0xDe5f774cb908382CcCFE1ADAFDFBc7efF48F84C0")
 
 app = Flask(__name__)
 CORS(app)

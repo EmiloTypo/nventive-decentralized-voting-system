@@ -8,7 +8,7 @@ import "./Login.css";
 import { message } from "antd";
 import admin from "../images/admin.jpg";
 
-export const AdminScreen = () => {
+export const AdminLoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -81,4 +81,4 @@ export const AdminScreen = () => {
   );
 };
 
-export default AdminScreen;
+export default AdminLoginScreen;

@@ -4,7 +4,7 @@ import Candidates from "./screens/CandidatesScreen";
 import Login from "./screens/LoginScreen";
 import Results from "./screens/ResultsScreen";
 import Voted from "./screens/VotedScreen";
-import Admin from "./screens/AdminScreen";
+import Admin from "./screens/AdminLoginScreen";
 import AdminDashboard from "./screens/AdminDashboardScreen";
 
 function App() {
