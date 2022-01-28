@@ -31,7 +31,7 @@ export default function Results() {
           <div className="candidates__cards">
             <div className="candidates__card__head">
               <div className="row_3">
-                <h4></h4>
+                <h4>Logo</h4>
               </div>
               <div className="row_3">
                 <h4>CandidateNumber</h4>

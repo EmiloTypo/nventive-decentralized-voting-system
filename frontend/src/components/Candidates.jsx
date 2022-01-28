@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Candidates.css";
 import empireIcon from "../images/empire.jpg";
 import republicIcon from "../images/republic.png";
@@ -20,8 +20,15 @@ export const partyNames = {
 
 export default function Candidates() {
   const [candidates, setCandidates] = useState([]);
+  const [voterId, setVoterId] = useState();
 
-  let history = useHistory();
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  useEffect(() => {
+    if (state) {
+      setVoterId(state.id);
+    }
+  }, [state]);
 
   useEffect(() => {
     fetch(url + "/results", {
@@ -33,20 +40,18 @@ export default function Candidates() {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("result", result);
         setCandidates(result);
       });
   }, []);
 
   function confirm(can_id) {
-    let id = localStorage.getItem("id");
+    let id = voterId;
     let cid = can_id + 1;
 
     const data = {
       voterID: parseInt(id),
       candidateID: cid,
     };
-    console.log("data", data);
 
     fetch(url + "/vote", {
       method: "POST",
@@ -55,19 +60,15 @@ export default function Candidates() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify(data),
-    })
-      .then((response) => {
-        console.log("response", response);
-        if (response["status"] === 201 || response["status"] === 200) {
-          history.replace("/Voted");
-          return response.json();
-        } else {
-          message.error("Already Voted!");
-        }
-      })
-      .then((result) => {
-        console.log("result", result);
-      });
+    }).then((response) => {
+      console.log(response);
+      if (response["status"] === 201 || response["status"] === 200) {
+        navigate("/Voted");
+        return response.json();
+      } else {
+        message.error("Already Voted!");
+      }
+    });
   }
 
   function cancel(e) {

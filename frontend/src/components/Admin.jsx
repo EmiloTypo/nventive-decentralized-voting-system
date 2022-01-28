@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Button } from "antd";
@@ -12,14 +12,13 @@ export default function Admin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function submitHandle() {
     const data = {
       username: username,
       password: password,
     };
-    console.log("data", data);
 
     fetch(url + "/admin-login", {
       method: "POST",
@@ -29,10 +28,9 @@ export default function Admin() {
       },
       body: JSON.stringify(data),
     }).then((response) => {
-      console.log("response", response);
       if (response["status"] === 201 || response["status"] === 200) {
         message.success("Login Successfully!");
-        history.push("/admin-dashboard");
+        navigate("/admin-dashboard");
         return response.json();
       } else {
         message.error("Wrong Username or Password!");

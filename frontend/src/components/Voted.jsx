@@ -1,13 +1,13 @@
 import React from "react";
 import { Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import right from "../images/right.jpg";
 
 export default function Voted() {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function submitHandle() {
-    history.replace("/");
+    navigate("/");
   }
 
   return (

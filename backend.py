@@ -11,7 +11,7 @@ web3 = Web3(Web3.HTTPProvider(rpc))
 abi = json.loads('[{"constant":false,"inputs":[{"name":"_candidateId","type":"uint256"}],"name":"vote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"candidatesCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidates","outputs":[{"name":"id","type":"uint256"},{"name":"name","type":"string"},{"name":"party","type":"string"},{"name":"voteCount","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"voters","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]')
 
 contract_addr = web3.toChecksumAddress(
-    "0x48e85D1CDb4614685bdCd669C4a1C48CF6F70773")
+    "0x89d7e8B835354a7A34A1Dad7dD46Fed616711b6E")
 
 app = Flask(__name__)
 CORS(app)
@@ -33,8 +33,6 @@ privatekeys = [
 vote_tx = []
 voted = []
 ended = 0
-logged = []
-voter_id = 0
 admin_user = 'test'
 admin_pass = 'test123'
 
@@ -44,24 +42,20 @@ def home():
     if(not ended):
         try:
             data = eval(request.data)
-
-            id = int(data["voterID"])-1
-
-            cid = int(data["candidateID"])
-            acc = web3.eth.accounts[id]
-            pvt = privatekeys[id]
-
+            voterId = int(data["voterID"])
+            candidateId = int(data["candidateID"])
+            accountAddress = web3.eth.accounts[voterId]
+            privateAddress = privatekeys[voterId]
             contract = web3.eth.contract(address=contract_addr, abi=abi)
             transaction = contract.functions.vote(
-                cid).buildTransaction({'gasPrice': web3.toWei('1', 'gwei'),
-                                       'nonce': web3.eth.getTransactionCount(acc),
-                                       'from': acc})
-            balance = web3.eth.getBalance(acc)
-            print(balance)
-            signed_tx = web3.eth.account.signTransaction(transaction, pvt)
+                candidateId).buildTransaction({'gasPrice': web3.toWei('1', 'gwei'),
+                                               'nonce': web3.eth.getTransactionCount(accountAddress),
+                                               'from': accountAddress})
+            signed_tx = web3.eth.account.signTransaction(
+                transaction, privateAddress)
             tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
             vote_tx.append(tx_hash)
-            voted.append(id)
+            voted.append(voterId)
             return "Vote successfully casted", 200
         except:
             return "Error processing", 500
@@ -74,16 +68,14 @@ def login():
     if(not ended):
         try:
             data = eval(request.data)
-
             id = int(data["id"])
-
-            if(id in logged):
+            if(id > 9):
+                return "No ETH account associated with this identification number", 401
+            print(voted)
+            if(id in voted):
                 return "Already voted", 401
 
-            global voter_id
-            voter_id += 1
-            logged.append(id)
-            return json.dumps(voter_id), 200
+            return json.dumps(id), 200
         except:
             return "Error processing", 500
     else:

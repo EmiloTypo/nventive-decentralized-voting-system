@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "antd";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { url } from "../globalUrl";
 import { message } from "antd";
 import "./AdminDashboard.css";
@@ -8,10 +8,10 @@ import logoutIcon from "../images/logout.png";
 import stop from "../images/stop.png";
 import result from "../images/result.png";
 export default function AdminDashboard() {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function logout() {
-    history.replace("/");
+    navigate("/");
   }
 
   function endHandle() {
@@ -22,7 +22,6 @@ export default function AdminDashboard() {
         "Content-Type": "application/json;charset=UTF-8",
       },
     }).then((response) => {
-      console.log("response", response);
       if (response["status"] === 201 || response["status"] === 200) {
         message.success("Election Ended!");
         return response.json();
@@ -33,7 +32,7 @@ export default function AdminDashboard() {
   }
 
   function viewResults() {
-    history.push("/results");
+    navigate("/results");
   }
 
   return (

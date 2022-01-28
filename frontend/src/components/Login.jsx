@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { Button } from "antd";
@@ -11,35 +11,30 @@ import { message } from "antd";
 export default function Login() {
   const [id, setID] = useState("");
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function submitHandle() {
-    const data = {
-      id,
-    };
-
     fetch(url + "/login", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json;charset=UTF-8",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ id }),
     })
       .then((response) => {
         if (response["status"] === 201 || response["status"] === 200) {
-          message.success("Connexion réussie!");
+          message.success("Logged in successfully!");
           return response.json();
         } else if (response["status"] === 401) {
-          message.error("Votre vote a déjà été comptabilisé!");
+          message.error("You already voted!");
         } else {
-          message.error("L'élection est terminée!");
+          message.error("The election is closed!");
         }
       })
       .then((result) => {
-        if (result) {
-          localStorage.setItem("id", result);
-          history.push("/candidates");
+        if (result !== undefined) {
+          navigate("/candidates", { state: { id: result } });
         }
       });
   }
