@@ -7,7 +7,7 @@ import "./AdminDashboard.css";
 import logoutIcon from "../images/logout.png";
 import stop from "../images/stop.png";
 import result from "../images/result.png";
-export default function AdminDashboard() {
+export const AdminDashboardScreen = () => {
   let navigate = useNavigate();
 
   function logout() {
@@ -77,4 +77,6 @@ export default function AdminDashboard() {
       </div>
     </>
   );
-}
+};
+
+export default AdminDashboardScreen;

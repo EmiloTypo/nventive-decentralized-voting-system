@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { url } from "../globalUrl";
 import { Spin } from "antd";
-import { partyIcons, partyNames } from "./Candidates";
+import { partyIcons, partyNames } from "./CandidatesScreen";
 
-export default function Results() {
+export const ResultsScreen = () => {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
@@ -77,4 +77,6 @@ export default function Results() {
       </div>
     </>
   );
-}
+};
+
+export default ResultsScreen;

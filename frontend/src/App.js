@@ -1,11 +1,11 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Candidates from "./components/Candidates";
-import Login from "./components/Login";
-import Results from "./components/Results";
-import Voted from "./components/Voted";
-import Admin from "./components/Admin";
-import AdminDashboard from "./components/AdminDashboard";
+import Candidates from "./screens/CandidatesScreen";
+import Login from "./screens/LoginScreen";
+import Results from "./screens/ResultsScreen";
+import Voted from "./screens/VotedScreen";
+import Admin from "./screens/AdminScreen";
+import AdminDashboard from "./screens/AdminDashboardScreen";
 
 function App() {
   return (

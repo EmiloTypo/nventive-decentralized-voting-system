@@ -8,7 +8,7 @@ import "./Login.css";
 import nventiveLogo from "../images/nventive.jpeg";
 import { message } from "antd";
 
-export default function Login() {
+export const LoginScreen = () => {
   const [id, setID] = useState("");
 
   let navigate = useNavigate();
@@ -23,6 +23,7 @@ export default function Login() {
       body: JSON.stringify({ id }),
     })
       .then((response) => {
+        console.log(response);
         if (response["status"] === 201 || response["status"] === 200) {
           message.success("Logged in successfully!");
           return response.json();
@@ -70,4 +71,6 @@ export default function Login() {
       </div>
     </>
   );
-}
+};
+
+export default LoginScreen;

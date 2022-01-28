@@ -2,6 +2,7 @@ from flask import Flask, request
 import json
 from web3 import Web3
 from flask_cors import CORS
+from requests.models import Response
 
 rpc = "http://127.0.0.1:9545"
 
@@ -11,7 +12,7 @@ web3 = Web3(Web3.HTTPProvider(rpc))
 abi = json.loads('[{"constant":false,"inputs":[{"name":"_candidateId","type":"uint256"}],"name":"vote","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"candidatesCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"candidates","outputs":[{"name":"id","type":"uint256"},{"name":"name","type":"string"},{"name":"party","type":"string"},{"name":"voteCount","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"voters","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]')
 
 contract_addr = web3.toChecksumAddress(
-    "0x89d7e8B835354a7A34A1Dad7dD46Fed616711b6E")
+    "0x6262F55d7fAd62E1B028AE68dCDC4A4aba3D48EB")
 
 app = Flask(__name__)
 CORS(app)
@@ -71,9 +72,8 @@ def login():
             id = int(data["id"])
             if(id > 9):
                 return "No ETH account associated with this identification number", 401
-            print(voted)
-            if(id in voted):
-                return "Already voted", 401
+            elif (id in voted):
+                return "Already voted", 403
 
             return json.dumps(id), 200
         except:

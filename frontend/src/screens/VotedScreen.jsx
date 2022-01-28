@@ -3,7 +3,7 @@ import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import right from "../images/right.jpg";
 
-export default function Voted() {
+export const VotedScreen = () => {
   let navigate = useNavigate();
 
   function submitHandle() {
@@ -33,4 +33,6 @@ export default function Voted() {
       </div>
     </>
   );
-}
+};
+
+export default VotedScreen;

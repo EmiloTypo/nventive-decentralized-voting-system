@@ -18,7 +18,7 @@ export const partyNames = {
   republic: "New Republic",
 };
 
-export default function Candidates() {
+export const CandidatesScreen = () => {
   const [candidates, setCandidates] = useState([]);
   const [voterId, setVoterId] = useState();
 
@@ -145,4 +145,6 @@ export default function Candidates() {
       </div>
     </>
   );
-}
+};
+
+export default CandidatesScreen;
