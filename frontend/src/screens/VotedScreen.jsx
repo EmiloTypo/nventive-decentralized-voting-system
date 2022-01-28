@@ -23,7 +23,7 @@ export const VotedScreen = () => {
               <img className="right" src={right} alt="logo"></img>
             </div>
 
-            <h2>Vote Casted Successfully!</h2>
+            <h2>Vote Cast Successfully!</h2>
             <br />
             <Button onClick={submitHandle} type="primary">
               Exit
