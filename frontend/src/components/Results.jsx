@@ -25,7 +25,7 @@ export default function Results() {
     <>
       <div className="candidates__ctr">
         <div className="candidates__header">
-          <h1>Résultats de l'élection</h1>
+          <h1>Election results</h1>
         </div>
         <div className="candidates__body">
           <div className="candidates__cards">
@@ -34,13 +34,13 @@ export default function Results() {
                 <h4></h4>
               </div>
               <div className="row_3">
-                <h4>Numéro du candidat</h4>
+                <h4>CandidateNumber</h4>
               </div>
               <div className="row_3">
-                <h4>Nom du candidat</h4>
+                <h4>Candidate name</h4>
               </div>
               <div className="row_3" style={{ justifyContent: "center" }}>
-                <h4>Nombre de votes</h4>
+                <h4>Number of votes</h4>
               </div>
             </div>
 

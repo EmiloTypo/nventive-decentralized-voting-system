@@ -44,7 +44,7 @@ export default function Admin() {
     <>
       <div className="candidates__ctr place__center">
         <div className="candidates__header top__fix">
-          <h1>Panneau d'administration</h1>
+          <h1>Admin panel</h1>
         </div>
 
         <div className="_center">
@@ -52,14 +52,14 @@ export default function Admin() {
             <div className="_center">
               <img className="right" src={admin} alt="logo"></img>
             </div>
-            <h2>Connexion</h2>
+            <h2>Login</h2>
 
             <Input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               size="large"
-              placeholder="Entrez votre nom d'utilisateur"
+              placeholder="Enter your username"
               prefix={<UserOutlined />}
             />
             <br />
@@ -69,12 +69,12 @@ export default function Admin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               size="large"
-              placeholder="Entrez votre mot de passe"
+              placeholder="Enter your password"
               prefix={<UserOutlined />}
             />
             <br />
             <Button onClick={submitHandle} type="primary">
-              Se connecter
+              Sign in
             </Button>
           </div>
         </div>

@@ -40,7 +40,7 @@ export default function AdminDashboard() {
     <>
       <div className="candidates__ctr ">
         <div className="candidates__header top__fix">
-          <h1>Panneau d'administration</h1>
+          <h1>Admin panel</h1>
         </div>
 
         <div className="center_row">
@@ -48,30 +48,30 @@ export default function AdminDashboard() {
             <div className="_center">
               <img className="right" src={result} alt="logo"></img>
             </div>
-            <h2>Résultats</h2>
+            <h2>Results</h2>
             <br />
             <Button onClick={viewResults} type="primary">
-              Afficher
+              Show
             </Button>
           </div>
           <div className="dashboard_card">
             <div className="_center">
               <img className="right" src={stop} alt="logo"></img>
             </div>
-            <h2>Fermer l'élection</h2>
+            <h2>Close the election</h2>
             <br />
             <Button onClick={endHandle} type="primary">
-              Fermer
+              Close
             </Button>
           </div>
           <div className="dashboard_card">
             <div className="_center">
               <img className="right" src={logoutIcon} alt="logo"></img>
             </div>
-            <h2>Se déconnecter</h2>
+            <h2>Logout</h2>
             <br />
             <Button onClick={logout} type="primary">
-              Se déconnecter
+              Logout
             </Button>
           </div>
         </div>

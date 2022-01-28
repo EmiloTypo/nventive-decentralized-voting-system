@@ -14,7 +14,7 @@ export default function Voted() {
     <>
       <div className="candidates__ctr place__center">
         <div className="candidates__header top__fix">
-          <h1>Système de vote décentralisé</h1>
+          <h1>nventive decentralized voting system</h1>
         </div>
 
         <div className="_center">
@@ -23,10 +23,10 @@ export default function Voted() {
               <img className="right" src={right} alt="logo"></img>
             </div>
 
-            <h2>Vote entré avec succès!</h2>
+            <h2>Vote Casted Successfully!</h2>
             <br />
             <Button onClick={submitHandle} type="primary">
-              Quitter
+              Exit
             </Button>
           </div>
         </div>

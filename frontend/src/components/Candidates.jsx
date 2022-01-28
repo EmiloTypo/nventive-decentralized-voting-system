@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./Candidates.css";
-import epIcon from "../images/ep.jpeg";
-import amgIcon from "../images/amg.jpeg";
-import mgIcon from "../images/mg.jpeg";
-import wjstIcon from "../images/wjst.jpeg";
+import empireIcon from "../images/empire.jpg";
+import republicIcon from "../images/republic.png";
 import "antd/dist/antd.css";
 import { Popconfirm, message } from "antd";
 import { url } from "../globalUrl";
 import { Spin } from "antd";
 
 export const partyIcons = {
-  ep: epIcon,
-  amg: amgIcon,
-  mg: mgIcon,
-  wjst: wjstIcon,
+  empire: empireIcon,
+  republic: republicIcon,
 };
 
 export const partyNames = {
-  ep: "Emile Provencher",
-  amg: "Alexandra-Maude Grenier",
-  mg: "Martin Gagnon",
-  wjst: "William-José Simard-Touzet",
+  empire: "Galactic Empire",
+  republic: "New Republic",
 };
 
 export default function Candidates() {
@@ -85,19 +79,19 @@ export default function Candidates() {
     <>
       <div className="candidates__ctr">
         <div className="candidates__header">
-          <h1>Liste des candidats</h1>
+          <h1>Candidate List</h1>
         </div>
         <div className="candidates__body">
           <div className="candidates__cards">
             <div className="candidates__card__head">
               <div className="row_3">
-                <h4>Image</h4>
+                <h4>Logo</h4>
               </div>
               <div className="row_3">
-                <h4>Numéro du candidat</h4>
+                <h4>Candidate number</h4>
               </div>
               <div className="row_3">
-                <h4>Nom du candidat</h4>
+                <h4>Candidate name</h4>
               </div>
               <div
                 className="row_3"
@@ -138,7 +132,7 @@ export default function Candidates() {
                         cancelText="No"
                         placement="left"
                       >
-                        <button className="btn btn-primary">VOTER</button>
+                        <button className="btn btn-primary">VOTE</button>
                       </Popconfirm>
                     </div>
                   </div>

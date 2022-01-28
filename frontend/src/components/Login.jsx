@@ -48,7 +48,7 @@ export default function Login() {
     <>
       <div className="candidates__ctr place__center">
         <div className="candidates__header top__fix">
-          <h1>Système de vote décentralisé</h1>
+          <h1>nventive decentralized voting system</h1>
         </div>
 
         <div className="_center">
@@ -56,19 +56,19 @@ export default function Login() {
             <div className="_center">
               <img className="right" src={nventiveLogo} alt="logo"></img>
             </div>
-            <h2>Connexion</h2>
+            <h2>Login</h2>
 
             <Input
               type="number"
               value={id}
               onChange={(e) => setID(e.target.value)}
               size="large"
-              placeholder="Entrez votre numéro d'identification"
+              placeholder="Enter your identification number"
               prefix={<UserOutlined />}
             />
             <br />
             <Button onClick={submitHandle} type="primary">
-              Se connecter
+              Sign in
             </Button>
           </div>
         </div>

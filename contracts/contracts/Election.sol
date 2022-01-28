@@ -12,10 +12,8 @@ contract Election  {
     uint public candidatesCount;
 
     constructor () public {
-        addCandidate("Candidat 1", "ep");
-        addCandidate("Candidat 2", "amg");
-        addCandidate("Candidat 3", "mg");
-        addCandidate("Candidat 4", "wjst");
+        addCandidate("Candidate #1", "empire");
+        addCandidate("Candidate #2", "republic");
     }
 
     function addCandidate (string memory _name, string memory _party) private {
