@@ -69,7 +69,9 @@ yarn start
 
 You should see the login screen :
 ![](./screenshots/Login.png)
+
 You can also access the voting results by accessing the http://localhost:3000/admin link. Username is `test` and password is `test123`:
+
 ![](./screenshots/AdminLogin.png)
 
 ## Possible improvements
